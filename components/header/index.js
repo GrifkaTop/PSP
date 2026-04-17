@@ -1,3 +1,4 @@
+// Обязательно добавь export!
 export class HeaderComponent {
     constructor(parent) {
         this.parent = parent;
@@ -13,15 +14,22 @@ export class HeaderComponent {
                 </div>
             </header>
             <nav class="main-nav">
-                <button class="nav-link btn-link" id="nav-main">Главная</button>
-                <button class="nav-link btn-link" id="nav-calc">Калькулятор</button>
+                <button class="nav-link" id="nav-main">Главная</button>
+                <button class="nav-link" id="nav-calc">Калькулятор</button>
+                <button class="nav-link" id="nav-cards">Карточки</button>
                 <a href="https://github.com/GrifkaTop" class="nav-link">Про автора</a>
-            </nav>`;
+                <a href="https://www.internauka.org/vak" class="nav-link">Оригинал</a>
+                <a href="https://www.internauka.org/journal/stud"  class="nav-link">Ориг.Карточки</a>
+            </nav>
+        `;
     }
 
     render(onPageChange) {
-        this.parent.insertAdjacentHTML('beforeend', this.getHTML());
-        document.getElementById('nav-main').addEventListener('click', () => onPageChange('main'));
-        document.getElementById('nav-calc').addEventListener('click', () => onPageChange('calc'));
+        this.parent.insertAdjacentHTML('afterbegin', this.getHTML());
+        
+        // Вешаем события на кнопки навигации
+        document.getElementById('nav-main').onclick = () => onPageChange('main');
+        document.getElementById('nav-calc').onclick = () => onPageChange('calc');
+        document.getElementById('nav-cards').onclick = () => onPageChange('cards');
     }
 }

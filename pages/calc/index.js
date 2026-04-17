@@ -7,23 +7,103 @@ export class CalcPage {
         this.onPageChange = onPageChange;
     }
 
-    render() {
-        this.parent.innerHTML = '';
-        new HeaderComponent(this.parent).render(this.onPageChange);
-
-        const calcHTML = `
+    getHTML() {
+        return `
             <main class="container">
                 <h2 class="section-title" style="text-align: center;">Онлайн калькулятор</h2>
+                
                 <div class="calculator-wrapper">
                     <input type="text" id="calc-display" readonly placeholder="0">
-                    <div class="calc-buttons" id="btns-container">
-                        </div>
+                    
+                    <div class="calc-buttons">
+                        <button class="calc-btn clear" data-action="clear">C</button>
+                        <button class="calc-btn operator" data-val="/">÷</button>
+                        <button class="calc-btn operator" data-val="*">×</button>
+                        
+                        <button class="calc-btn" data-val="7">7</button>
+                        <button class="calc-btn" data-val="8">8</button>
+                        <button class="calc-btn" data-val="9">9</button>
+                        <button class="calc-btn operator" data-val="-">-</button>
+                        
+                        <button class="calc-btn" data-val="4">4</button>
+                        <button class="calc-btn" data-val="5">5</button>
+                        <button class="calc-btn" data-val="6">6</button>
+                        <button class="calc-btn operator" data-val="+">+</button>
+
+                        <button class="calc-btn" data-val="1">1</button>
+                        <button class="calc-btn" data-val="2">2</button>
+                        <button class="calc-btn" data-val="3">3</button>
+                        <button class="calc-btn operator" data-val="^">^</button>
+                        
+                        <button class="calc-btn" data-val="0">0</button> 
+                        <button class="calc-btn" data-val=".">.</button> 
+                        <button class="calc-btn equal" data-action="calculate">=</button> 
+                    </div>
                 </div>
-            </main>`;
+            </main>
+        `;
+    }
+
+    // Логика работы калькулятора (бывший calc.js)
+    addListeners() {
+        const display = document.getElementById('calc-display');
+        const buttons = document.querySelectorAll('.calc-btn');
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const val = e.target.dataset.val;
+                const action = e.target.dataset.action;
+
+                if (val) {
+                    if (display.value === "Ошибка") display.value = "";
+                    display.value += val;
+                }
+
+                if (action === 'clear') {
+                    display.value = "";
+                }
+
+                if (action === 'calculate') {
+                    this.calculate(display);
+                }
+            });
+        });
+    }
+
+    calculate(display) {
+        if (display.value !== "") {
+            try {
+                if (display.value.includes("**")) throw new Error();
+                
+                let expression = display.value.replaceAll("^", "**");
+                let result = eval(expression);
+
+                if (result === Infinity || result === -Infinity || isNaN(result)) {
+                    throw new Error();
+                }
+
+                display.value = result;
+            } catch (e) {
+                display.value = "Ошибка";
+            }
+        }
+    }
+
+    render() {
+        this.parent.innerHTML = '';
+
+        // 1. Рендерим Шапку
+        const header = new HeaderComponent(this.parent);
+        header.render(this.onPageChange);
+
+        // 2. Рендерим Калькулятор
+        this.parent.insertAdjacentHTML('beforeend', this.getHTML());
         
-        this.parent.insertAdjacentHTML('beforeend', calcHTML);
-        // Здесь вы можете вызвать логику калькулятора или отрисовать кнопки
-        
-        new FooterComponent(this.parent).render();
+        // 3. Вешаем события на кнопки
+        this.addListeners();
+
+        // 4. Рендерим Подвал
+        const footer = new FooterComponent(this.parent);
+        footer.render();
     }
 }

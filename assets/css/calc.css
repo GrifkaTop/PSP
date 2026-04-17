@@ -24,14 +24,14 @@
     font-family: monospace;
 }
 
-/* Сетка кнопок (4 колонки) */
+/* Сетка кнопок */
 .calc-buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 12px;
 }
 
-/* Общий стиль кнопок */
+/* Общий стиль кнопок калькулятора */
 .calc-btn {
     padding: 20px;
     font-size: 20px;
@@ -48,21 +48,6 @@
     transform: translateY(-2px);
 }
 
-/* Стили для разных типов кнопок */
-.calc-btn.operator { 
-    background: #666; 
-}
-
-.calc-btn.clear { 
-    background: #d9534f; 
-    grid-column: span 2; 
-}
-
-.calc-btn.equal { 
-    background: #5cb85c; 
-    grid-column: span 2; /* Занимает 2 колонки слева */
-}
-
-.calc-btn.zero-btn {
-    grid-column: span 2; /* Занимает 2 колонки справа */
-}
+.calc-btn.operator { background: #666; }
+.calc-btn.clear { background: #d9534f; grid-column: span 2; }
+.calc-btn.equal { background: #5cb85c; grid-column: span 2; }

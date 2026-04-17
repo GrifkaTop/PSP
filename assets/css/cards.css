@@ -1,0 +1,116 @@
+/* Основной контейнер сетки в pages/cards/index.js должен иметь этот класс */
+.journal-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.issue-card {
+    width: 330px;
+    font-family: Arial, sans-serif;
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 420px; /* Соотношение сторон как на макете */
+    overflow: hidden;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.main-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Зеленая боковая плашка */
+.control-panel {
+    position: absolute;
+    top: 0;
+    right: -270px; /* Прячем контент */
+    width: 310px;
+    height: 100%;
+    background-color: #5da33a;
+    display: flex;
+    transition: right 0.4s ease-in-out;
+    z-index: 10;
+}
+
+/* Состояние при открытии (будем добавлять класс через JS) */
+.control-panel.is-open {
+    right: 0;
+}
+
+/* Вертикальный ярлык */
+.panel-label {
+    width: 40px;
+    height: 100%;
+    background-color: #4a822e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+}
+
+.panel-label span {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    white-space: nowrap;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.panel-label .arrow {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+/* Контент внутри плашки */
+.panel-content {
+    padding: 20px;
+    color: white;
+    flex: 1;
+}
+
+.panel-content h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 5px;
+}
+
+.date-row {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.date-row strong {
+    display: block;
+}
+
+/* Подвал карточки */
+.card-info {
+    text-align: center;
+    padding: 15px 0;
+}
+
+.deadline {
+    margin: 0;
+    color: #333;
+    line-height: 1.4;
+}
+
+.rules-link {
+    color: #5da33a;
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 14px;
+}

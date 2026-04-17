@@ -1,6 +1,4 @@
-/* =========================================
-   4. ГЛАВНАЯ СТРАНИЦА (HERO & SERVICES)
-   ========================================= */
+/* ГЛАВНАЯ СТРАНИЦА (HERO & SERVICES) */
 .hero-section {
     background-color: #f4f4f4;
     display: flex;
@@ -27,6 +25,7 @@
     font-size: 24px;
 }
 
+/* Сетка услуг */
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -34,6 +33,10 @@
     margin-top: 30px;
 }
 
+.service-item i {
+    margin-right: 10px; /* Создает аккуратный отступ в 10 пикселей после иконки */
+    color: #8cc63f;    /* Заодно можно покрасить иконки в фирменный зеленый */
+}
 .service-item {
     background: #fff;
     padding: 20px;
@@ -43,16 +46,50 @@
     align-items: center;
 }
 
-.service-item i {
-    color: #8cc63f;
-    margin-right: 15px;
-    font-size: 24px;
+/* КОМАНДА */
+.team-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.team-card {
+    text-align: center;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    width: 200px;
+}
+
+.team-photo {
+    width: 120px;
+    height: 120px;
+    background: #ddd;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    color: #fff;
 }
 
 .admin-role {
-    color: #8cc63f !important; /* Цвет как у кнопок калькулятора */
-    font-weight: bold !important;
+    color: #8cc63f;
+    font-weight: bold;
     text-transform: uppercase;
     font-size: 12px;
     letter-spacing: 1px;
+}
+
+.btn-submit {
+    background-color: #8cc63f;
+    color: white !important;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    display: inline-block;
 }
