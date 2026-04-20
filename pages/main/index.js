@@ -78,17 +78,26 @@ export class MainPage {
     }
 
     render() {
-        // Очищаем содержимое корневого элемента
         this.parent.innerHTML = '';
 
-        // Отрисовываем компонент шапки
+        // 1. Рендерим Header
         const header = new HeaderComponent(this.parent);
         header.render(this.onPageChange);
 
-        // Вставляем основной HTML контент страницы
+        // 2. Рендерим контент
         this.parent.insertAdjacentHTML('beforeend', this.getHTML());
 
-        // Отрисовываем компонент подвала
+        // --- НОВЫЙ БЛОК: Оживляем кнопку "Подать заявку" ---
+        const ctaBtn = this.parent.querySelector('.btn-submit');
+        if (ctaBtn) {
+            ctaBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.onPageChange('calc'); // Например, ведем на страницу калькулятора
+            });
+        }
+        // ------------------------------------------------
+
+        // 3. Рендерим Footer
         const footer = new FooterComponent(this.parent);
         footer.render();
     }

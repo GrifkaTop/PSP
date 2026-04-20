@@ -2,21 +2,26 @@
 .journal-grid {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 50px;
     flex-wrap: wrap;
     padding: 20px;
 }
 
 .issue-card {
-    width: 330px;
+    width: 180px;
     font-family: Arial, sans-serif;
+    position: relative;
+}
+
+.issue-card-wrapper {
+    position: relative;
 }
 
 .image-container {
     position: relative;
     width: 100%;
-    height: 420px; /* Соотношение сторон как на макете */
-    overflow: hidden;
+    height: 300px;
+    overflow: visible;
     border-radius: 4px;
     cursor: pointer;
 }
@@ -24,32 +29,40 @@
 .main-image {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     display: block;
 }
 
-/* Зеленая боковая плашка */
+/* Зеленая боковая плашка - спрятана, выдвигается при открытии */
 .control-panel {
     position: absolute;
     top: 0;
-    right: -270px; /* Прячем контент */
-    width: 310px;
+    left: -300px;
+    width: 300px;
     height: 100%;
     background-color: #5da33a;
     display: flex;
-    transition: right 0.4s ease-in-out;
-    z-index: 10;
+    flex-direction: column;
+    z-index: 1000;
+    overflow-y: auto;
+    padding: 16px;
+    box-sizing: border-box;
+    color: white;
 }
 
-/* Состояние при открытии (будем добавлять класс через JS) */
+/* Состояние при открытии - левая граница плашки соприкасается с правой границей фотки */
 .control-panel.is-open {
-    right: 0;
+    left: 180px;
 }
 
-/* Вертикальный ярлык */
+/* Ярлык - виден всегда справа, посередине */
 .panel-label {
-    width: 40px;
-    height: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -27px;
+    width: 27px;
+    height: 200px;
     background-color: #4a822e;
     display: flex;
     flex-direction: column;
@@ -57,43 +70,21 @@
     justify-content: center;
     color: white;
     cursor: pointer;
+    z-index: 10;
+    opacity: 1;
 }
 
 .panel-label span {
     writing-mode: vertical-rl;
     transform: rotate(180deg);
+    font-size: 12px;
+    font-weight: bold;
     white-space: nowrap;
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
 }
 
 .panel-label .arrow {
-    margin-top: 10px;
-    font-size: 18px;
-}
-
-/* Контент внутри плашки */
-.panel-content {
-    padding: 20px;
-    color: white;
-    flex: 1;
-}
-
-.panel-content h3 {
-    font-size: 18px;
-    margin-bottom: 15px;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
-    padding-bottom: 5px;
-}
-
-.date-row {
-    font-size: 14px;
-    margin-bottom: 10px;
-}
-
-.date-row strong {
-    display: block;
+    margin-top: 8px;
+    font-size: 16px;
 }
 
 /* Подвал карточки */
@@ -113,4 +104,219 @@
     text-decoration: underline;
     font-weight: bold;
     font-size: 14px;
+}
+
+/* Кнопка удаления карточки */
+.btn-delete {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 5px 10px;
+    opacity: 0.7;
+}
+
+.btn-delete:hover {
+    opacity: 1;
+}
+
+/* Кнопка добавления новой карточки */
+.btn-add-new {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #8cc63f;
+    color: white;
+    border: none;
+    font-size: 32px;
+    cursor: pointer;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-add-new:hover {
+    background-color: #5da33a;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+}
+
+.btn-add-new:active {
+    transform: scale(0.95);
+}
+
+/* Страница деталей */
+.detail-page {
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.btn-back {
+    background: none;
+    border: 1px solid #5da33a;
+    color: #5da33a;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.btn-back:hover {
+    background-color: #5da33a;
+    color: white;
+}
+
+.detail-content {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.detail-image {
+    flex: 0 1 400px;
+}
+
+.detail-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+}
+
+.detail-info {
+    flex: 1;
+    min-width: 300px;
+}
+
+.detail-info h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #8cc63f;
+    padding-bottom: 10px;
+}
+
+.detail-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+.detail-table tr {
+    border-bottom: 1px solid #eee;
+}
+
+.detail-table td {
+    padding: 12px 0;
+    font-size: 14px;
+}
+
+.detail-table td:first-child {
+    color: #666;
+    font-weight: 500;
+    padding-right: 20px;
+}
+
+.detail-table td:last-child {
+    color: #333;
+}
+
+.detail-table strong {
+    color: #5da33a;
+    font-size: 16px;
+}
+
+.btn-delete-large {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-delete-large:hover {
+    background-color: #c82333;
+}
+
+/* Стили для сроков внутри панели */
+.control-panel .date-row {
+    font-size: 13px;
+    margin-bottom: 12px;
+    line-height: 1.5;
+    color: white;
+}
+
+.control-panel .date-row strong {
+    display: inline;
+    font-weight: bold;
+    color: #ffd700;
+}
+
+.control-panel .panel-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.control-panel h4 {
+    color: white;
+}
+
+/* Кнопка условий участия */
+.btn-conditions {
+    background-color: #7cb342;
+    color: white;
+    border: none;
+    padding: 10px 12px;
+    border-radius: 3px;
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    margin-top: 8px;
+}
+
+.btn-conditions:hover {
+    background-color: #689f38;
+}
+
+/* Кнопка закрытия подробной плашки */
+.btn-close-panel {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: white;
+    font-size: 13px;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 3px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    width: 100%;
+    text-align: center;
+}
+
+.btn-close-panel:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.6);
 }
