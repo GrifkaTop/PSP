@@ -30,30 +30,33 @@
             <input type="text" id="calc-display" readonly placeholder="0">
 
             <div class="calc-buttons">
-                <button class="calc-btn clear">C</button>
-                <button class="calc-btn operator">÷</button>
-                <button class="calc-btn operator">×</button>
+                <button class="calc-btn clear" data-action="clear">C</button>
+                <button class="calc-btn operator" data-val="/">÷</button>
+                <button class="calc-btn operator" data-val="*">×</button>
 
-                <button class="calc-btn">7</button>
-                <button class="calc-btn">8</button>
-                <button class="calc-btn">9</button>
-                <button class="calc-btn operator">-</button>
+                <button class="calc-btn" data-val="7">7</button>
+                <button class="calc-btn" data-val="8">8</button>
+                <button class="calc-btn" data-val="9">9</button>
+                <button class="calc-btn operator" data-val="-">-</button>
 
-                <button class="calc-btn">4</button>
-                <button class="calc-btn">5</button>
-                <button class="calc-btn">6</button>
-                <button class="calc-btn operator">+</button>
+                <button class="calc-btn" data-val="4">4</button>
+                <button class="calc-btn" data-val="5">5</button>
+                <button class="calc-btn" data-val="6">6</button>
+                <button class="calc-btn operator" data-val="+">+</button>
 
-                <button class="calc-btn">1</button>
-                <button class="calc-btn">2</button>
-                <button class="calc-btn">3</button>
-                <button class="calc-btn operator">^</button>
+                <button class="calc-btn" data-val="1">1</button>
+                <button class="calc-btn" data-val="2">2</button>
+                <button class="calc-btn" data-val="3">3</button>
+                <button class="calc-btn operator" data-val="^">^</button>
 
-                <button class="calc-btn">0</button>
-                <button class="calc-btn">.</button>
-                <button class="calc-btn equal">=</button>
+                <button class="calc-btn" data-val="0">0</button>
+                <button class="calc-btn" data-val=".">.</button>
+                <button class="calc-btn equal" data-action="calculate">=</button>
+                <button class="calc-btn vak-btn" data-action="vak">ВАК₽</button>
             </div>
         </div>
+
+        <p class="vak-hint">ВАК₽ — введите число страниц, нажмите кнопку → стоимость публикации (500 руб/стр)</p>
     </main>
 
     <footer class="main-footer">
@@ -75,6 +78,8 @@
             Все правы незащищены - 2030 OOO "БАУМАНКА", KIM: 67676767676767
         </div>
     </footer>
+
+    <script src="calc.js"></script>
 
 </body>
 </html>

@@ -58,11 +58,19 @@
     grid-column: span 2; 
 }
 
-.calc-btn.equal { 
-    background: #5cb85c; 
-    grid-column: span 2; /* Занимает 2 колонки слева */
+.calc-btn.equal {
+    background: #5cb85c;
 }
 
-.calc-btn.zero-btn {
-    grid-column: span 2; /* Занимает 2 колонки справа */
+.calc-btn.vak-btn {
+    background: #2c3e50;
+    font-size: 14px;
+}
+
+.vak-hint {
+    max-width: 350px;
+    margin: 10px auto 0;
+    text-align: center;
+    font-size: 12px;
+    color: #666;
 }
