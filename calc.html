@@ -3,51 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <title>ИНТЕРНЫУКА — Калькулятор</title>
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> -->
-    <link rel="stylesheet" href="style.css"> 
-    <link rel="stylesheet" href="calc.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="calc.css">
 </head>
 <body>
 
-    <div id="header-placeholder"></div>
+    <header class="main-header">
+        <div class="logo">ИНТЕРНЫУКА</div>
+        <div class="contact-info">
+            <div><i class="far fa-envelope"></i> gmail@gmail.com</div>
+            <div class="contact-phone"><i class="fas fa-phone"></i> 88888888</div>
+        </div>
+    </header>
+    <nav class="main-nav">
+        <a href="main.html" class="nav-link">Главная</a>
+        <a href="calc.html" class="nav-link">Калькулятор</a>
+        <a href="https://github.com/GrifkaTop" class="nav-link">Про автора</a>
+        <a href="https://www.internauka.org/vak" class="nav-link">Оригинал</a>
+    </nav>
 
     <main class="container">
         <h2 class="section-title" style="text-align: center;">Онлайн калькулятор</h2>
-        
+
         <div class="calculator-wrapper">
             <input type="text" id="calc-display" readonly placeholder="0">
-            
+
             <div class="calc-buttons">
-                <button class="calc-btn clear" onclick="clearDisplay()">C</button>
-                <button class="calc-btn operator" onclick="insert('/')">÷</button>
-                <button class="calc-btn operator" onclick="insert('*')">×</button>
-                
-                <button class="calc-btn" onclick="insert('7')">7</button>
-                <button class="calc-btn" onclick="insert('8')">8</button>
-                <button class="calc-btn" onclick="insert('9')">9</button>
-                <button class="calc-btn operator" onclick="insert('-')">-</button>
-                
-                <button class="calc-btn" onclick="insert('4')">4</button>
-                <button class="calc-btn" onclick="insert('5')">5</button>
-                <button class="calc-btn" onclick="insert('6')">6</button>
-                <button class="calc-btn operator" onclick="insert('+')">+</button>
+                <button class="calc-btn clear">C</button>
+                <button class="calc-btn operator">÷</button>
+                <button class="calc-btn operator">×</button>
 
-                <button class="calc-btn" onclick="insert('1')">1</button>
-                <button class="calc-btn" onclick="insert('2')">2</button>
-                <button class="calc-btn" onclick="insert('3')">3</button>
-                <button class="calc-btn operator" onclick="insert('^')">^</button>
-                
-                <button class="calc-btn" onclick="insert('0')">0</button> 
-                <button class="calc-btn" onclick="insert('.')">.</button> 
-                <button class="calc-btn equal" onclick="calculate()">=</button> 
+                <button class="calc-btn">7</button>
+                <button class="calc-btn">8</button>
+                <button class="calc-btn">9</button>
+                <button class="calc-btn operator">-</button>
 
+                <button class="calc-btn">4</button>
+                <button class="calc-btn">5</button>
+                <button class="calc-btn">6</button>
+                <button class="calc-btn operator">+</button>
+
+                <button class="calc-btn">1</button>
+                <button class="calc-btn">2</button>
+                <button class="calc-btn">3</button>
+                <button class="calc-btn operator">^</button>
+
+                <button class="calc-btn">0</button>
+                <button class="calc-btn">.</button>
+                <button class="calc-btn equal">=</button>
+            </div>
         </div>
     </main>
 
-    <div id="footer-placeholder"></div>
-
-    <script src="script.js"></script>
-    <script src="calc.js"></script>
+    <footer class="main-footer">
+        <div class="footer-top">
+            <div class="footer-column">
+                <h3>Издательство</h3>
+                <div class="footer-links">Отзывы<br>Об издательстве<br>Контакты</div>
+            </div>
+            <div class="footer-column">
+                <h3>Документы</h3>
+                <div class="footer-links">Договор оферты<br>Политика данных</div>
+            </div>
+            <div class="footer-column">
+                <h3>Услуги</h3>
+                <div class="footer-links">Издание книг<br>Монография</div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            Все правы незащищены - 2030 OOO "БАУМАНКА", KIM: 67676767676767
+        </div>
+    </footer>
 
 </body>
 </html>

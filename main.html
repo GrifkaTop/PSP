@@ -3,18 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>ИНТЕРНЫУКА — Главная</title>
-    <link rel="stylesheet" href="style.css"> 
-    <link rel="stylesheet" href="main.css"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
 
-    <div id="header-placeholder"></div>
+    <header class="main-header">
+        <div class="logo">ИНТЕРНЫУКА</div>
+        <div class="contact-info">
+            <div><i class="far fa-envelope"></i> gmail@gmail.com</div>
+            <div class="contact-phone"><i class="fas fa-phone"></i> 88888888</div>
+        </div>
+    </header>
+    <nav class="main-nav">
+        <a href="main.html" class="nav-link">Главная</a>
+        <a href="calc.html" class="nav-link">Калькулятор</a>
+        <a href="https://github.com/GrifkaTop" class="nav-link">Про автора</a>
+        <a href="https://www.internauka.org/vak" class="nav-link">Оригинал</a>
+    </nav>
 
     <section class="hero-section">
         <div class="hero-content">
             <h1 class="hero-title">Публикация статьи ВАК с гарантией, срочно от 3 дней</h1>
-            <p class="hero-description">Издательство «ИНТЕРНЫУКА» оказывает услуги по публикации научных статей в журналах, входящих в перечень ВАК. Полное сопровождение позволяет успешно опубликовать статью.</p>
+            <p class="hero-description">
+                Издательство «ИНТЕРНЫУКА» оказывает услуги по публикации научных статей в журналах,
+                входящих в перечень ВАК. Полное сопровождение позволяет успешно опубликовать статью.
+            </p>
         </div>
         <div class="hero-icon">
             <i class="fas fa-book"></i>
@@ -23,7 +38,7 @@
 
     <main class="container">
         <div class="cta-wrapper">
-            <a href="#" class="btn-submit">Подать заявку</a>
+            <a href="calc.html" class="btn-submit">Подать заявку</a>
         </div>
 
         <h2 class="section-title">Услуга включает в себя</h2>
@@ -63,15 +78,36 @@
                 <div class="team-card">
                     <div class="team-photo"><i class="fas fa-user-md"></i></div>
                     <div class="team-name">Алик</div>
-                    <div class="team-role admin-role">Ментар</div>
+                    <div class="team-role admin-role">Ментор</div>
+                </div>
+                <div class="team-card">
+                    <div class="team-photo"><i class="fas fa-female"></i></div>
+                    <div class="team-name">Аксенова Мария Владимировна</div>
+                    <div class="team-role admin-role">Младший научный сотрудник</div>
                 </div>
             </div>
         </section>
     </main>
 
-    <div id="footer-placeholder"></div>
-
-    <script src="script.js"></script>
+    <footer class="main-footer">
+        <div class="footer-top">
+            <div class="footer-column">
+                <h3>Издательство</h3>
+                <div class="footer-links">Отзывы<br>Об издательстве<br>Контакты</div>
+            </div>
+            <div class="footer-column">
+                <h3>Документы</h3>
+                <div class="footer-links">Договор оферты<br>Политика данных</div>
+            </div>
+            <div class="footer-column">
+                <h3>Услуги</h3>
+                <div class="footer-links">Издание книг<br>Монография</div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            Все правы незащищены - 2030 OOO "БАУМАНКА", KIM: 67676767676767
+        </div>
+    </footer>
 
 </body>
 </html>
