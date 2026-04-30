@@ -5,25 +5,58 @@ import { CardDetailPage } from "./pages/card-detail/index.js";
 
 const root = document.getElementById('root');
 let cardsPageInstance = null;
+let currentHash = '';
 
-function navigate(page, param = null) {
+function renderPage(page, param = null) {
     if (page === 'main') {
-        const mainPage = new MainPage(root, navigate);
-        mainPage.render();
+        new MainPage(root, navigate).render();
     } else if (page === 'calc') {
-        const calcPage = new CalcPage(root, navigate);
-        calcPage.render();
+        new CalcPage(root, navigate).render();
     } else if (page === 'cards') {
         const cardsPage = new CardsPage(root, navigate);
         cardsPageInstance = cardsPage;
         cardsPage.render();
     } else if (page === 'card-detail' && param !== null) {
-        if (cardsPageInstance) {
-            const detailPage = new CardDetailPage(root, navigate, param, cardsPageInstance);
-            detailPage.render();
+        if (!cardsPageInstance) {
+            cardsPageInstance = new CardsPage(root, navigate);
         }
+        new CardDetailPage(root, navigate, param, cardsPageInstance).render();
     }
 }
 
-// Запуск приложения с главной страницы
-navigate('main');
+function navigate(page, param = null) {
+    const hash = page === 'card-detail' && param !== null
+        ? `card-detail/${param}`
+        : page;
+    currentHash = hash;
+    location.hash = hash;
+    renderPage(page, param);
+}
+
+function navigateFromHash() {
+    const hash = location.hash.slice(1);
+    currentHash = hash;
+
+    if (hash === 'calc') {
+        renderPage('calc');
+    } else if (hash === 'cards') {
+        renderPage('cards');
+    } else if (hash.startsWith('card-detail/')) {
+        const id = parseInt(hash.split('/')[1]);
+        if (!cardsPageInstance) {
+            cardsPageInstance = new CardsPage(root, navigate);
+        }
+        renderPage('card-detail', id);
+    } else {
+        renderPage('main');
+    }
+}
+
+window.addEventListener('hashchange', () => {
+    const hash = location.hash.slice(1);
+    if (hash !== currentHash) {
+        navigateFromHash();
+    }
+});
+
+navigateFromHash();
