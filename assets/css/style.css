@@ -100,3 +100,63 @@ body {
     font-size: 13px;
     color: #aaa;
 }
+
+.merge-sort-wrapper {
+    max-width: 500px;
+    margin: 0 auto;
+    background: #4c5053;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+.merge-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.merge-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.merge-field label {
+    color: #ccc;
+    font-size: 14px;
+}
+
+.merge-input {
+    padding: 12px 15px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    background: #f4f4f4;
+    color: #333;
+    font-family: monospace;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.merge-result {
+    background: #e8f5e9;
+    color: #2e7d32;
+    font-weight: bold;
+}
+
+.merge-btn {
+    padding: 14px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #8cc63f;
+    color: white;
+    transition: all 0.2s;
+}
+
+.merge-btn:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+}
