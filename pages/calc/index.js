@@ -11,20 +11,20 @@ export class CalcPage {
         return `
             <main class="container">
                 <h2 class="section-title" style="text-align: center;">Онлайн калькулятор</h2>
-                
+
                 <div class="calculator-wrapper">
                     <input type="text" id="calc-display" readonly placeholder="0">
-                    
+
                     <div class="calc-buttons">
                         <button class="calc-btn clear" data-action="clear">C</button>
                         <button class="calc-btn operator" data-val="/">÷</button>
                         <button class="calc-btn operator" data-val="*">×</button>
-                        
+
                         <button class="calc-btn" data-val="7">7</button>
                         <button class="calc-btn" data-val="8">8</button>
                         <button class="calc-btn" data-val="9">9</button>
                         <button class="calc-btn operator" data-val="-">-</button>
-                        
+
                         <button class="calc-btn" data-val="4">4</button>
                         <button class="calc-btn" data-val="5">5</button>
                         <button class="calc-btn" data-val="6">6</button>
@@ -34,7 +34,7 @@ export class CalcPage {
                         <button class="calc-btn" data-val="2">2</button>
                         <button class="calc-btn" data-val="3">3</button>
                         <button class="calc-btn operator" data-val="^">^</button>
-                        
+
                         <button class="calc-btn" data-val="0">0</button>
                         <button class="calc-btn" data-val=".">.</button>
                         <button class="calc-btn equal" data-action="calculate">=</button>
@@ -46,7 +46,6 @@ export class CalcPage {
         `;
     }
 
-    // Логика работы калькулятора (бывший calc.js)
     addListeners() {
         const display = document.getElementById('calc-display');
         const buttons = document.querySelectorAll('.calc-btn');
@@ -85,7 +84,7 @@ export class CalcPage {
         if (display.value !== "") {
             try {
                 if (display.value.includes("**")) throw new Error();
-                
+
                 let expression = display.value.replaceAll("^", "**");
                 let result = eval(expression);
 
@@ -103,17 +102,12 @@ export class CalcPage {
     render() {
         this.parent.innerHTML = '';
 
-        // 1. Рендерим Шапку
         const header = new HeaderComponent(this.parent);
         header.render(this.onPageChange);
 
-        // 2. Рендерим Калькулятор
         this.parent.insertAdjacentHTML('beforeend', this.getHTML());
-        
-        // 3. Вешаем события на кнопки
         this.addListeners();
 
-        // 4. Рендерим Подвал
         const footer = new FooterComponent(this.parent);
         footer.render();
     }

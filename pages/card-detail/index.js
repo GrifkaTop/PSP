@@ -67,32 +67,24 @@ export class CardDetailPage {
     render() {
         this.parent.innerHTML = '';
 
-        // 1. Рендерим Header
         const header = new HeaderComponent(this.parent);
         header.render(this.onPageChange);
 
-        // 2. Рендерим контент
         this.parent.insertAdjacentHTML('beforeend', this.getHTML());
 
-        // 3. Обработчики кнопок
         const btnBack = this.parent.querySelector('#btn-back');
         if (btnBack) {
-            btnBack.addEventListener('click', () => {
-                this.onPageChange('cards');
-            });
+            btnBack.addEventListener('click', () => this.onPageChange('cards'));
         }
 
         const btnDelete = this.parent.querySelector('#btn-delete-card');
         if (btnDelete) {
             btnDelete.addEventListener('click', () => {
-                // Удаляем карточку через cardsPage
                 this.cardsPage.deleteCard(this.cardId);
-                // Переходим на cards страницу
                 this.onPageChange('cards');
             });
         }
 
-        // 4. Рендерим Footer
         const footer = new FooterComponent(this.parent);
         footer.render();
     }

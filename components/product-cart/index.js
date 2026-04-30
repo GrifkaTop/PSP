@@ -1,4 +1,3 @@
-// Функция для создания карточки
 export const createProductCard = (data, onDelete = null, onDetail = null) => {
     const card = document.createElement('div');
     card.className = 'issue-card';
@@ -20,14 +19,12 @@ export const createProductCard = (data, onDelete = null, onDetail = null) => {
         </div>
     `;
 
-    // Логика обработчиков
     const label = card.querySelector('.panel-label');
     const imageContainer = card.querySelector('.image-container');
     const image = card.querySelector('.main-image');
     const btnDelete = card.querySelector('.btn-delete');
     let panel = null;
 
-    // Функция для создания подробной плашки
     const createDetailedPanel = () => {
         const panelHTML = `
             <div class="control-panel is-open">
@@ -46,34 +43,24 @@ export const createProductCard = (data, onDelete = null, onDetail = null) => {
         imageContainer.insertAdjacentHTML('afterend', panelHTML);
         panel = card.querySelector('.control-panel');
 
-        // Обработчик для кнопки закрытия
         const btnClosePanel = panel.querySelector('.btn-close-panel');
         btnClosePanel.addEventListener('click', closeDetailedPanel);
 
-        // Обработчик для кнопки условий участия
         const btnConditions = panel.querySelector('.btn-conditions');
         btnConditions.addEventListener('click', (e) => {
             e.stopPropagation();
-            if (onDetail) {
-                onDetail(data.id);
-            }
+            if (onDetail) onDetail(data.id);
         });
     };
 
-    // Функция для закрытия подробной плашки
     const closeDetailedPanel = () => {
-        if (panel) {
-            panel.classList.remove('is-open');
-            // Удаляем плашку мгновенно
-            if (panel && panel.parentNode) {
-                panel.remove();
-                panel = null;
-                label.style.display = 'flex';
-            }
+        if (panel && panel.parentNode) {
+            panel.remove();
+            panel = null;
+            label.style.display = 'flex';
         }
     };
 
-    // Клик на главную плашку - создать и открыть подробную
     label.addEventListener('click', (e) => {
         e.stopPropagation();
         if (!panel) {
@@ -82,19 +69,13 @@ export const createProductCard = (data, onDelete = null, onDetail = null) => {
         }
     });
 
-    // Клик по фото - переход на детальную страницу
     image.addEventListener('click', () => {
-        if (onDetail) {
-            onDetail(data.id);
-        }
+        if (onDetail) onDetail(data.id);
     });
 
-    // Клик по кнопке удаления
     btnDelete.addEventListener('click', (e) => {
         e.stopPropagation();
-        if (onDelete) {
-            onDelete(data.id);
-        }
+        if (onDelete) onDelete(data.id);
     });
 
     return card;

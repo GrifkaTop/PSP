@@ -1,4 +1,3 @@
-/* ГЛАВНАЯ СТРАНИЦА (HERO & SERVICES) */
 .hero-section {
     background-color: #f4f4f4;
     display: flex;
@@ -25,7 +24,6 @@
     font-size: 24px;
 }
 
-/* Сетка услуг */
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -34,9 +32,10 @@
 }
 
 .service-item i {
-    margin-right: 10px; /* Создает аккуратный отступ в 10 пикселей после иконки */
-    color: #8cc63f;    /* Заодно можно покрасить иконки в фирменный зеленый */
+    margin-right: 10px;
+    color: #8cc63f;
 }
+
 .service-item {
     background: #fff;
     padding: 20px;
@@ -46,7 +45,6 @@
     align-items: center;
 }
 
-/* КОМАНДА */
 .team-list {
     display: flex;
     flex-wrap: wrap;

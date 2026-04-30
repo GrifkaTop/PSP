@@ -13,7 +13,7 @@ export class MainPage {
                 <div class="hero-content">
                     <h1 class="hero-title">Публикация статьи ВАК с гарантией, срочно от 3 дней</h1>
                     <p class="hero-description">
-                        Издательство «ИНТЕРНЫУКА» оказывает услуги по публикации научных статей в журналах, 
+                        Издательство «ИНТЕРНЫУКА» оказывает услуги по публикации научных статей в журналах,
                         входящих в перечень ВАК. Полное сопровождение позволяет успешно опубликовать статью.
                     </p>
                 </div>
@@ -80,24 +80,19 @@ export class MainPage {
     render() {
         this.parent.innerHTML = '';
 
-        // 1. Рендерим Header
         const header = new HeaderComponent(this.parent);
         header.render(this.onPageChange);
 
-        // 2. Рендерим контент
         this.parent.insertAdjacentHTML('beforeend', this.getHTML());
 
-        // --- НОВЫЙ БЛОК: Оживляем кнопку "Подать заявку" ---
         const ctaBtn = this.parent.querySelector('.btn-submit');
         if (ctaBtn) {
             ctaBtn.addEventListener('click', (e) => {
                 e.preventDefault();
-                this.onPageChange('calc'); // Например, ведем на страницу калькулятора
+                this.onPageChange('calc');
             });
         }
-        // ------------------------------------------------
 
-        // 3. Рендерим Footer
         const footer = new FooterComponent(this.parent);
         footer.render();
     }

@@ -1,4 +1,3 @@
-// Обязательно добавь export!
 export class HeaderComponent {
     constructor(parent) {
         this.parent = parent;
@@ -26,8 +25,6 @@ export class HeaderComponent {
 
     render(onPageChange) {
         this.parent.insertAdjacentHTML('afterbegin', this.getHTML());
-        
-        // Вешаем события на кнопки навигации
         document.getElementById('nav-main').onclick = () => onPageChange('main');
         document.getElementById('nav-calc').onclick = () => onPageChange('calc');
         document.getElementById('nav-cards').onclick = () => onPageChange('cards');
