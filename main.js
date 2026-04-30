@@ -2,7 +2,7 @@ import { MainPage } from "./pages/main/index.js";
 import { CalcPage } from "./pages/calc/index.js";
 import { CardsPage } from "./pages/cards/index.js";
 import { CardDetailPage } from "./pages/card-detail/index.js";
-import { MergeSortPage } from "./pages/merge-sort/index.js";
+import { Dz1Page } from "./pages/dz1/index.js";
 
 const root = document.getElementById('root');
 let cardsPageInstance = null;
@@ -17,8 +17,8 @@ function renderPage(page, param = null) {
         const cardsPage = new CardsPage(root, navigate);
         cardsPageInstance = cardsPage;
         cardsPage.render();
-    } else if (page === 'merge-sort') {
-        new MergeSortPage(root, navigate).render();
+    } else if (page === 'dz1') {
+        new Dz1Page(root, navigate).render();
     } else if (page === 'card-detail' && param !== null) {
         if (!cardsPageInstance) {
             cardsPageInstance = new CardsPage(root, navigate);
@@ -44,8 +44,8 @@ function navigateFromHash() {
         renderPage('calc');
     } else if (hash === 'cards') {
         renderPage('cards');
-    } else if (hash === 'merge-sort') {
-        renderPage('merge-sort');
+    } else if (hash === 'dz1') {
+        renderPage('dz1');
     } else if (hash.startsWith('card-detail/')) {
         const id = parseInt(hash.split('/')[1]);
         if (!cardsPageInstance) {

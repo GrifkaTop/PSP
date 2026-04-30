@@ -16,7 +16,7 @@ export class HeaderComponent {
                 <button class="nav-link" id="nav-main">Главная</button>
                 <button class="nav-link" id="nav-calc">Калькулятор</button>
                 <button class="nav-link" id="nav-cards">Карточки</button>
-                <button class="nav-link" id="nav-merge-sort">Задание 1</button>
+                <button class="nav-link" id="nav-dz1">dz1</button>
                 <a href="https://github.com/GrifkaTop" class="nav-link">Про автора</a>
                 <a href="https://www.internauka.org/vak" class="nav-link">Оригинал</a>
                 <a href="https://www.internauka.org/journal/stud"  class="nav-link">Ориг.Карточки</a>
@@ -29,6 +29,6 @@ export class HeaderComponent {
         document.getElementById('nav-main').onclick = () => onPageChange('main');
         document.getElementById('nav-calc').onclick = () => onPageChange('calc');
         document.getElementById('nav-cards').onclick = () => onPageChange('cards');
-        document.getElementById('nav-merge-sort').onclick = () => onPageChange('merge-sort');
+        document.getElementById('nav-dz1').onclick = () => onPageChange('dz1');
     }
 }
