@@ -35,11 +35,13 @@ export class CalcPage {
                         <button class="calc-btn" data-val="3">3</button>
                         <button class="calc-btn operator" data-val="^">^</button>
                         
-                        <button class="calc-btn" data-val="0">0</button> 
-                        <button class="calc-btn" data-val=".">.</button> 
-                        <button class="calc-btn equal" data-action="calculate">=</button> 
+                        <button class="calc-btn" data-val="0">0</button>
+                        <button class="calc-btn" data-val=".">.</button>
+                        <button class="calc-btn equal" data-action="calculate">=</button>
+                        <button class="calc-btn vak-btn" data-action="vak">ВАК₽</button>
                     </div>
                 </div>
+                <p class="vak-hint">ВАК₽ — введите число страниц, нажмите кнопку → стоимость публикации (500 руб/стр)</p>
             </main>
         `;
     }
@@ -65,6 +67,15 @@ export class CalcPage {
 
                 if (action === 'calculate') {
                     this.calculate(display);
+                }
+
+                if (action === 'vak') {
+                    const pages = parseFloat(display.value);
+                    if (!isNaN(pages) && pages > 0) {
+                        display.value = pages * 500;
+                    } else {
+                        display.value = "Ошибка";
+                    }
                 }
             });
         });

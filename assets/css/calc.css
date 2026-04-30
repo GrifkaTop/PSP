@@ -50,4 +50,13 @@
 
 .calc-btn.operator { background: #666; }
 .calc-btn.clear { background: #d9534f; grid-column: span 2; }
-.calc-btn.equal { background: #5cb85c; grid-column: span 2; }
+.calc-btn.equal { background: #5cb85c; }
+.calc-btn.vak-btn { background: #2c3e50; font-size: 14px; }
+
+.vak-hint {
+    max-width: 350px;
+    margin: 10px auto 0;
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+}
