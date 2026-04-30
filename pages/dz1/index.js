@@ -11,7 +11,7 @@ export class Dz1Page {
         return `
             <main class="container">
                 <h2 class="section-title" style="text-align: center; margin-bottom: 30px;">dz1</h2>
-                <div class="merge-sort-wrapper">
+                <div class="task-wrapper">
                     <div class="merge-inputs">
                         <div class="merge-field">
                             <label for="first-array">Массив 1 (через пробел):</label>
@@ -29,7 +29,7 @@ export class Dz1Page {
                     </div>
                 </div>
 
-                <div class="merge-sort-wrapper" style="margin-top: 30px;">
+                <div class="task-wrapper" style="margin-top: 30px;">
                     <div class="merge-inputs">
                         <div class="merge-field">
                             <label for="rle-input">RLE сжатие (строка):</label>
@@ -83,7 +83,7 @@ function rle(str) {
         if (i < str.length && str[i] === str[i - 1]) {
             count++;
         } else {
-            result += count > 1 ? count + str[i - 1] : str[i - 1];
+            result += count > 1 ? count + str[i - 1] : 1 + str[i - 1];
             count = 1;
         }
     }

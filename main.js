@@ -7,23 +7,34 @@ import { Dz1Page } from "./pages/dz1/index.js";
 const root = document.getElementById('root');
 let cardsPageInstance = null;
 let currentHash = '';
+let currentPageInstance = null;
 
 function renderPage(page, param = null) {
+    if (currentPageInstance?.dispose) {
+        currentPageInstance.dispose();
+    }
+    currentPageInstance = null;
+
     if (page === 'main') {
-        new MainPage(root, navigate).render();
+        currentPageInstance = new MainPage(root, navigate);
+        currentPageInstance.render();
     } else if (page === 'calc') {
-        new CalcPage(root, navigate).render();
+        currentPageInstance = new CalcPage(root, navigate);
+        currentPageInstance.render();
     } else if (page === 'cards') {
         const cardsPage = new CardsPage(root, navigate);
         cardsPageInstance = cardsPage;
+        currentPageInstance = cardsPage;
         cardsPage.render();
     } else if (page === 'dz1') {
-        new Dz1Page(root, navigate).render();
+        currentPageInstance = new Dz1Page(root, navigate);
+        currentPageInstance.render();
     } else if (page === 'card-detail' && param !== null) {
         if (!cardsPageInstance) {
             cardsPageInstance = new CardsPage(root, navigate);
         }
-        new CardDetailPage(root, navigate, param, cardsPageInstance).render();
+        currentPageInstance = new CardDetailPage(root, navigate, param, cardsPageInstance);
+        currentPageInstance.render();
     }
 }
 
