@@ -20,6 +20,14 @@ export class CardsPage {
         });
     }
 
+    getDataByDate(date) {
+        ajax.get(stockUrls.getStocksByDate(date), (data) => {
+            if (data) {
+                this.renderData(data);
+            }
+        });
+    }
+
     renderData(items) {
         const container = this.parent.querySelector('.journal-grid');
         if (!container) return;
@@ -37,6 +45,11 @@ export class CardsPage {
         return `
             <main class="container">
                 <h2 class="section-title" style="text-align: center;">Карточки журналов</h2>
+                <div class="date-filter" style="display:flex;gap:8px;justify-content:center;margin-bottom:20px;">
+                    <input type="date" id="date-filter-input" class="form-control" style="max-width:200px;">
+                    <button id="date-filter-btn" class="btn btn-primary">Фильтровать</button>
+                    <button id="date-reset-btn" class="btn btn-secondary">Сброс</button>
+                </div>
                 <div class="journal-grid"></div>
             </main>
         `;
@@ -60,6 +73,27 @@ export class CardsPage {
         this.parent.insertAdjacentHTML('beforeend', this.getHTML());
 
         this.getData();
+
+        const filterBtn = this.parent.querySelector('#date-filter-btn');
+        const filterInput = this.parent.querySelector('#date-filter-input');
+
+        const resetBtn = this.parent.querySelector('#date-reset-btn');
+
+        resetBtn.addEventListener('click', () => {
+            filterInput.value = '';
+            this.renderData(this.issuesData);
+        });
+
+        filterBtn.addEventListener('click', () => {
+            const value = filterInput.value;
+            if (!value) {
+                this.renderData(this.issuesData);
+            } else {
+                const [year, month, day] = value.split('-');
+                const formatted = `${day}.${month}.${year}`;
+                this.getDataByDate(formatted);
+            }
+        });
 
         const footer = new FooterComponent(this.parent);
         footer.render();

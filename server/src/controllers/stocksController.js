@@ -42,10 +42,32 @@ const deleteStock = (req, res) => {
     res.status(204).send();
 };
 
+
+const parseDate = (str) => {
+    const [day, month, year] = str.split('.');
+    return new Date(year, month - 1, day);
+};
+
+const getDateStocks = (req, res) => {
+    const { date } = req.params;
+    const targetDate = parseDate(date);
+    if (isNaN(targetDate.getTime())) {
+        return res.status(400).json({ error: 'дата фигня' });
+    }
+    const stocks = stocksService.findAll();
+    const result = stocks.filter(stock =>
+        parseDate(stock['deadline']).getTime() >= targetDate.getTime()
+    );
+    res.json(result);
+};
+
 module.exports = {
     getAllStocks,
     getStockById,
     createStock,
     updateStock,
-    deleteStock
+    deleteStock,
+    getDateStocks
 };
+
+

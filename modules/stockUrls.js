@@ -22,6 +22,10 @@ class StockUrls {
     updateStockById(id) {
         return `${this.baseUrl}/stocks/${id}`;
     }
+
+    getStocksByDate(date) {
+        return `${this.baseUrl}/stocks/date/${date}`;
+    }
 }
 
 export const stockUrls = new StockUrls();
