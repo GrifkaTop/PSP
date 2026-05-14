@@ -13,7 +13,6 @@ const DEFAULT_CARDS = [
         elibraryDate: '04.05.2026',
         mailDate: '07.05.2026',
         trackDate: '16.05.2026',
-        rulesUrl: '#'
     },
     {
         id: 15,
@@ -25,7 +24,6 @@ const DEFAULT_CARDS = [
         elibraryDate: '12.05.2026',
         mailDate: '15.05.2026',
         trackDate: '23.05.2026',
-        rulesUrl: '#'
     },
     {
         id: 16,
@@ -37,7 +35,6 @@ const DEFAULT_CARDS = [
         elibraryDate: '19.05.2026',
         mailDate: '22.05.2026',
         trackDate: '30.05.2026',
-        rulesUrl: '#'
     },
     {
         id: 17,
@@ -49,7 +46,6 @@ const DEFAULT_CARDS = [
         elibraryDate: '26.05.2026',
         mailDate: '29.05.2026',
         trackDate: '06.06.2026',
-        rulesUrl: '#'
     },
     {
         id: 18,
@@ -61,7 +57,6 @@ const DEFAULT_CARDS = [
         elibraryDate: '02.06.2026',
         mailDate: '05.06.2026',
         trackDate: '13.06.2026',
-        rulesUrl: '#'
     },
     {
         id: 19,
@@ -72,8 +67,7 @@ const DEFAULT_CARDS = [
         releaseDate: '02.06.2026',
         elibraryDate: '09.06.2026',
         mailDate: '12.06.2026',
-        trackDate: '20.06.2026',
-        rulesUrl: '#'
+        trackDate: '20.06.2026'
     }
 ];
 
@@ -121,8 +115,7 @@ export class CardsPage {
             releaseDate: '09.06.2026',
             elibraryDate: '16.06.2026',
             mailDate: '19.06.2026',
-            trackDate: '27.06.2026',
-            rulesUrl: '#'
+            trackDate: '27.06.2026'
         });
         this.saveCards();
         this.render();
