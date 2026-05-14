@@ -1,27 +1,5 @@
 [
   {
-    "id": 14,
-    "img": "assets/images/1.png",
-    "title": "Выпуск 14",
-    "deadline": "19.04.2026",
-    "shortDeadline": "19 апреля 2026",
-    "releaseDate": "28.04.2026",
-    "elibraryDate": "04.05.2026",
-    "mailDate": "07.05.2026",
-    "trackDate": "16.05.2026"
-  },
-  {
-    "id": 15,
-    "img": "assets/images/2.png",
-    "title": "Выпуск 15",
-    "deadline": "26.04.2026",
-    "shortDeadline": "26 апреля 2026",
-    "releaseDate": "05.05.2026",
-    "elibraryDate": "12.05.2026",
-    "mailDate": "15.05.2026",
-    "trackDate": "23.05.2026"
-  },
-  {
     "id": 16,
     "img": "assets/images/3.png",
     "title": "Выпуск 16",
@@ -30,18 +8,8 @@
     "releaseDate": "12.05.2026",
     "elibraryDate": "19.05.2026",
     "mailDate": "22.05.2026",
-    "trackDate": "30.05.2026"
-  },
-  {
-    "id": 17,
-    "img": "assets/images/4.png",
-    "title": "Выпуск 17",
-    "deadline": "10.05.2026",
-    "shortDeadline": "10 мая 2026",
-    "releaseDate": "19.05.2026",
-    "elibraryDate": "26.05.2026",
-    "mailDate": "29.05.2026",
-    "trackDate": "06.06.2026"
+    "trackDate": "30.05.2026",
+    "model": "assets/models/2.glb"
   },
   {
     "id": 18,
@@ -52,7 +20,8 @@
     "releaseDate": "26.05.2026",
     "elibraryDate": "02.06.2026",
     "mailDate": "05.06.2026",
-    "trackDate": "13.06.2026"
+    "trackDate": "13.06.2026",
+    "model": "assets/models/3.glb"
   },
   {
     "id": 19,
@@ -63,6 +32,7 @@
     "releaseDate": "02.06.2026",
     "elibraryDate": "09.06.2026",
     "mailDate": "12.06.2026",
-    "trackDate": "20.06.2026"
+    "trackDate": "20.06.2026",
+    "model": "assets/models/1.glb"
   }
 ]

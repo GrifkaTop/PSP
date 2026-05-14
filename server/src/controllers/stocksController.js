@@ -16,11 +16,11 @@ const getStockById = (req, res) => {
 };
 
 const createStock = (req, res) => {
-    const { img, title, deadline, shortDeadline, releaseDate, elibraryDate, mailDate, trackDate } = req.body;
+    const { img, title, deadline, shortDeadline, releaseDate, elibraryDate, mailDate, trackDate, model } = req.body;
     if (!title || !deadline || !releaseDate) {
         return res.status(400).json({ error: 'Обязательные поля: title, deadline, releaseDate' });
     }
-    const newStock = stocksService.create({ img, title, deadline, shortDeadline, releaseDate, elibraryDate, mailDate, trackDate });
+    const newStock = stocksService.create({ img, title, deadline, shortDeadline, releaseDate, elibraryDate, mailDate, trackDate, model });
     res.status(201).json(newStock);
 };
 

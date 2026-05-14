@@ -3,6 +3,8 @@ import { FooterComponent } from "../../components/footer/index.js";
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { ajax } from '../../modules/ajax.js';
+import { stockUrls } from '../../modules/stockUrls.js';
 
 export class CardDetailPage {
     constructor(parent, onPageChange, cardId, cardsPage) {
@@ -10,11 +12,36 @@ export class CardDetailPage {
         this.onPageChange = onPageChange;
         this.cardId = cardId;
         this.cardsPage = cardsPage;
-        this.card = cardsPage.issuesData.find(c => c.id === cardId);
+        this.card = null;
         this.animFrameId = null;
         this.renderer = null;
         this._glbHandler = null;
         this._resizeHandler = null;
+    }
+
+    getData() {
+        ajax.get(stockUrls.getStockById(this.cardId), (data) => {
+            this.card = data;
+            this.renderData();
+        });
+    }
+
+    renderData() {
+        const placeholder = this.parent.querySelector('#card-detail-placeholder');
+        if (placeholder) {
+            placeholder.outerHTML = this.getHTML();
+        }
+        this._bindEvents();
+        if (this.card) {
+            const container = document.getElementById('detail-3d');
+            const { scene, camera, controls } = this.initThree(container);
+            const modelPath = this.card.model || `assets/models/${(this.cardId % 3) || 3}.glb`;
+            this.loadModel(scene, camera, controls, modelPath);
+            this._glbHandler = (e) => {
+                this.loadModel(scene, camera, controls, e.detail, true);
+            };
+            window.addEventListener('glb-upload', this._glbHandler);
+        }
     }
 
     dispose() {
@@ -183,15 +210,7 @@ export class CardDetailPage {
         }
     }
 
-    render() {
-        this.dispose();
-        this.parent.innerHTML = '';
-
-        const header = new HeaderComponent(this.parent);
-        header.render(this.onPageChange);
-
-        this.parent.insertAdjacentHTML('beforeend', this.getHTML());
-
+    _bindEvents() {
         const btnBack = this.parent.querySelector('#btn-back');
         if (btnBack) {
             btnBack.addEventListener('click', () => {
@@ -208,21 +227,20 @@ export class CardDetailPage {
                 this.onPageChange('cards');
             });
         }
+    }
 
-        if (this.card) {
-            const container = document.getElementById('detail-3d');
-            const { scene, camera, controls } = this.initThree(container);
+    render() {
+        this.dispose();
+        this.parent.innerHTML = '';
 
-            const modelIndex = (this.cardId % 3) || 3;
-            this.loadModel(scene, camera, controls, `assets/models/${modelIndex}.glb`);
+        const header = new HeaderComponent(this.parent);
+        header.render(this.onPageChange);
 
-            this._glbHandler = (e) => {
-                this.loadModel(scene, camera, controls, e.detail, true);
-            };
-            window.addEventListener('glb-upload', this._glbHandler);
-        }
+        this.parent.insertAdjacentHTML('beforeend', '<div id="card-detail-placeholder"></div>');
 
         const footer = new FooterComponent(this.parent);
         footer.render();
+
+        this.getData();
     }
 }
