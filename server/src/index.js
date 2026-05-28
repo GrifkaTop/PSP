@@ -12,6 +12,7 @@ stocksService.init(DATA_FILE_PATH);
 
 app.use(express.json());
 
+// CORS — для работы в dev-режиме (Live Server / Vite dev)
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE, OPTIONS');
@@ -21,6 +22,9 @@ app.use((req, res, next) => {
     }
     next();
 });
+
+// Раздача фронтенда в качестве статики (prod — открывать через http://localhost:3000)
+app.use(express.static(path.join(__dirname, '..', 'public')));
 
 app.use((req, res, next) => {
     console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);

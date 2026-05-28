@@ -11,21 +11,19 @@ export class CardsPage {
         this.issuesData = [];
     }
 
-    getData() {
-        ajax.get(stockUrls.getStocks(), (data) => {
-            if (data) {
-                this.issuesData = data;
-                this.renderData(data);
-            }
-        });
+    async getData() {
+        const { data } = await ajax.get(stockUrls.getStocks());
+        if (data) {
+            this.issuesData = data;
+            this.renderData(data);
+        }
     }
 
-    getDataByDate(date) {
-        ajax.get(stockUrls.getStocksByDate(date), (data) => {
-            if (data) {
-                this.renderData(data);
-            }
-        });
+    async getDataByDate(date) {
+        const { data } = await ajax.get(stockUrls.getStocksByDate(date));
+        if (data) {
+            this.renderData(data);
+        }
     }
 
     renderData(items) {
@@ -55,13 +53,12 @@ export class CardsPage {
         `;
     }
 
-    deleteCard(id) {
-        ajax.delete(stockUrls.removeStockById(id), (data, status) => {
-            if (status === 204) {
-                this.issuesData = this.issuesData.filter(card => card.id !== id);
-                this.renderData(this.issuesData);
-            }
-        });
+    async deleteCard(id) {
+        const { status } = await ajax.delete(stockUrls.removeStockById(id));
+        if (status === 204) {
+            this.issuesData = this.issuesData.filter(card => card.id !== id);
+            this.renderData(this.issuesData);
+        }
     }
 
     render() {

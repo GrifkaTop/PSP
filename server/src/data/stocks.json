@@ -24,6 +24,18 @@
     "model": "assets/models/2.glb"
   },
   {
+    "id": 22,
+    "img": "assets/images/4.png",
+    "title": "Выпуск 22",
+    "deadline": "24.08.2026",
+    "shortDeadline": "24 августа 2026",
+    "releaseDate": "02.09.2026",
+    "elibraryDate": "09.09.2026",
+    "mailDate": "12.09.2026",
+    "trackDate": "20.09.2026",
+    "model": "assets/models/1.glb"
+  },
+  {
     "id": 23,
     "img": "assets/images/5.png",
     "title": "Выпуск 23",
@@ -36,18 +48,6 @@
     "model": "assets/models/2.glb"
   },
   {
-    "id": 24,
-    "img": "assets/images/6.png",
-    "title": "Выпуск 24",
-    "deadline": "24.10.2026",
-    "shortDeadline": "24 октября 2026",
-    "releaseDate": "02.11.2026",
-    "elibraryDate": "09.11.2026",
-    "mailDate": "12.11.2026",
-    "trackDate": "20.11.2026",
-    "model": "assets/models/3.glb"
-  },
-  {
     "id": 25,
     "img": "assets/images/7.png",
     "title": "Выпуск 25",
@@ -58,5 +58,65 @@
     "mailDate": "12.12.2026",
     "trackDate": "20.12.2026",
     "model": "assets/models/1.glb"
+  },
+  {
+    "id": 26,
+    "img": "assets/images/1.png",
+    "title": "Выпуск 26",
+    "deadline": "24.12.2026",
+    "shortDeadline": "24 декабря 2026",
+    "releaseDate": "02.01.2027",
+    "elibraryDate": "09.01.2027",
+    "mailDate": "12.01.2027",
+    "trackDate": "20.01.2027",
+    "model": "assets/models/2.glb"
+  },
+  {
+    "id": 27,
+    "img": "assets/images/2.png",
+    "title": "Выпуск 27",
+    "deadline": "24.01.2027",
+    "shortDeadline": "24 января 2027",
+    "releaseDate": "02.02.2027",
+    "elibraryDate": "09.02.2027",
+    "mailDate": "12.02.2027",
+    "trackDate": "20.02.2027",
+    "model": "assets/models/3.glb"
+  },
+  {
+    "id": 28,
+    "img": "assets/images/3.png",
+    "title": "Выпуск 28",
+    "deadline": "24.02.2027",
+    "shortDeadline": "24 февраля 2027",
+    "releaseDate": "02.03.2027",
+    "elibraryDate": "09.03.2027",
+    "mailDate": "12.03.2027",
+    "trackDate": "20.03.2027",
+    "model": "assets/models/1.glb"
+  },
+  {
+    "id": 29,
+    "img": "assets/images/4.png",
+    "title": "Выпуск 29",
+    "deadline": "24.03.2027",
+    "shortDeadline": "24 марта 2027",
+    "releaseDate": "02.04.2027",
+    "elibraryDate": "09.04.2027",
+    "mailDate": "12.04.2027",
+    "trackDate": "20.04.2027",
+    "model": "assets/models/2.glb"
+  },
+  {
+    "id": 30,
+    "img": "assets/images/5.png",
+    "title": "Выпуск 30",
+    "deadline": "24.04.2027",
+    "shortDeadline": "24 апреля 2027",
+    "releaseDate": "02.05.2027",
+    "elibraryDate": "09.05.2027",
+    "mailDate": "12.05.2027",
+    "trackDate": "20.05.2027",
+    "model": "assets/models/3.glb"
   }
 ]

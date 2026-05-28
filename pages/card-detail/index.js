@@ -19,11 +19,10 @@ export class CardDetailPage {
         this._resizeHandler = null;
     }
 
-    getData() {
-        ajax.get(stockUrls.getStockById(this.cardId), (data) => {
-            this.card = data;
-            this.renderData();
-        });
+    async getData() {
+        const { data } = await ajax.get(stockUrls.getStockById(this.cardId));
+        this.card = data;
+        this.renderData();
     }
 
     renderData() {
