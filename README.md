@@ -139,25 +139,3 @@ deleteCard(id) {
     });
 }
 ```
-
----
-
-### Задание 3. Решение проблемы CORS при локальной разработке
-
-**Вопрос:** «Как настроена CORS политика на сервере, чтобы браузер не блокировал AJAX-запросы с другого порта?»
-
-**Реализация:**
-В `server/src/index.js` встроен middleware-обработчик, который перехватывает запросы и проставляет нужные заголовки, разрешая запросы с любых источников (`Access-Control-Allow-Origin: *`). Также обрабатываются предварительные preflight-запросы `OPTIONS` (возвращается статус `204`):
-
-```js
-// server/src/index.js
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    if (req.method === 'OPTIONS') {
-        return res.sendStatus(204);
-    }
-    next();
-});
-```
